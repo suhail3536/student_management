@@ -16,7 +16,7 @@ import os
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 if not SECRET_KEY:
-    SECRET_KEY = "django-insecure-fallback-key"
+    SECRET_KEY = "django-insecure-fallback-key9084809460"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -138,6 +138,7 @@ from datetime import timedelta
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+         'rest_framework.permissions.AllowAny',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (

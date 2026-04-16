@@ -31,6 +31,7 @@ function StudentApp() {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [dark, setDark] = useState(true);
+  const API_URL = "https://student-backend-bfu1.onrender.com/api/";
 
   const navigate = useNavigate();
 
@@ -38,7 +39,7 @@ function StudentApp() {
   const fetchStudents = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://127.0.0.1:8000/api/students/", {
+      const res = await fetch(`${API_URL}students/`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access")}`,
         },
@@ -66,7 +67,7 @@ function StudentApp() {
     }
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/students/", {
+      const res = await fetch(`${API_URL}students/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -95,9 +96,7 @@ function StudentApp() {
   //data  delete
   const deleteStudent = async (id) => {
     try {
-      const res = await fetch(
-        `http://127.0.0.1:8000/api/students/${id}/`,
-        {
+     const res = await fetch(`${API_URL}students/${id}/`, { 
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access")}`,
@@ -126,9 +125,7 @@ function StudentApp() {
   // data update
   const updateStudent = async () => {
     try {
-      const res = await fetch(
-        `http://127.0.0.1:8000/api/students/${editId}/`,
-        {
+      const res = await fetch(`${API_URL}students/${editId}/`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

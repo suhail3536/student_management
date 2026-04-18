@@ -71,7 +71,6 @@ function StudentApp() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("access")}`,
         },
         body: JSON.stringify({
           name,
@@ -81,7 +80,6 @@ function StudentApp() {
           course,
         }),
       });
-
       const data = await res.json();
       if (!res.ok) throw data;
 
@@ -96,12 +94,12 @@ function StudentApp() {
   //data  delete
   const deleteStudent = async (id) => {
     try {
-     const res = await fetch(`${API_URL}students/${id}/`, { 
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("access")}`,
-          },
-        }
+      const res = await fetch(`${API_URL}students/${id}/`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access")}`,
+        },
+      }
       );
 
       if (!res.ok) throw new Error();
@@ -126,19 +124,19 @@ function StudentApp() {
   const updateStudent = async () => {
     try {
       const res = await fetch(`${API_URL}students/${editId}/`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("access")}`,
-          },
-          body: JSON.stringify({
-            name,
-            age: Number(age),
-            email,
-            roll_no: roll,
-            course,
-          }),
-        }
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("access")}`,
+        },
+        body: JSON.stringify({
+          name,
+          age: Number(age),
+          email,
+          roll_no: roll,
+          course,
+        }),
+      }
       );
 
       const data = await res.json();

@@ -26,7 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 CORS_ALLOW_ALL_ORIGINS = True
-
+CSRF_TRUSTED_ORIGINS=[
+    "https://student-management-34zq.vercel.app"
+]
 import os
 
 SECRET_KEY = os.environ.get("SECRET_KEY",  "fallback-secret")
@@ -36,7 +38,7 @@ DEBUG = os.environ.get("DEBUG") == "True"
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
+    "http://student-management-34zq.vercel.app"
 ]
 
 
@@ -52,6 +54,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'api',
+    
 ]
 
 MIDDLEWARE = [
